@@ -1,0 +1,6 @@
+127.0.0.1 - - [11/Jan/2026 18:45:10] "GET /?password=f4b11473-edad-435d-afdf-7257e4d5c944 HTTP/1.1" 200 -
+172.16.0.1 - - [11/Jan/2026 18:45:10] "GET /?_gl=1*1xleaif*_gcl_au*MTQ3Nzc1ODk4NC4xNzY4MTU1OTEx*_ga*MTIzMzg4NzYzMC4xNzY4MTU1OTA1*_ga_8NW18Q4WF2*czE3NjgxNTU5MTAkbzEkZzEkdDE3NjgxNTU5NDgkajIyJGwwJGgxMjM1MDQyNzk5&password=f4b11473-edad-435d-afdf-7257e4d5c944 HTTP/1.1" 200 -
+172.16.0.1 - - [11/Jan/2026 18:45:13] "GET /css/style.css?password=f4b11473-edad-435d-afdf-7257e4d5c944 HTTP/1.1" 200 -
+172.16.0.1 - - [11/Jan/2026 18:45:13] "GET /js/app.js?password=f4b11473-edad-435d-afdf-7257e4d5c944 HTTP/1.1" 200 -
+172.16.0.1 - - [11/Jan/2026 18:45:16] code 404, message File not found
+172.16.0.1 - - [11/Jan/2026 18:45:16] "GET /favicon.ico?password=f4b11473-edad-435d-afdf-7257e4d5c944 HTTP/1.1" 404 -

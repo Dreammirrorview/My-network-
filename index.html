@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Monitor Dashboard - Olawale Abdul-Ganiyu</title>
+    <link rel="stylesheet" href="css/style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🛡️ NETWORK MONITOR NINJA</div>
+            <div class="status-bar">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span>System Active</span>
+                </div>
+                <div class="status-indicator">
+                    <span id="connection-count">0</span>
+                    <span>Active Connections</span>
+                </div>
+                <div class="status-indicator">
+                    <span id="network-speed">0 Mbps</span>
+                    <span>Speed</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <!-- Left Panel - Network Scanning -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Network Scanning</div>
+                <div class="status-dot"></div>
+            </div>
+            
+            <div class="scan-section">
+                <div class="scanner"></div>
+                
+                <div class="network-types">
+                    <div class="network-type">
+                        <div class="icon">🌐</div>
+                        <div class="name">Ethernet</div>
+                    </div>
+                    <div class="network-type">
+                        <div class="icon">📶</div>
+                        <div class="name">Bluetooth</div>
+                    </div>
+                    <div class="network-type">
+                        <div class="icon">📡</div>
+                        <div class="name">Infrared</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 15px; color: var(--primary);">Detected Devices</h3>
+                <div class="device-list" id="device-list">
+                    <!-- Devices will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Map & Location -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Live Location Map</div>
+                <div class="status-dot" style="background: var(--secondary);"></div>
+            </div>
+            
+            <div class="map-section">
+                <div class="map-container">
+                    <div id="satellite-map"></div>
+                    <div class="map-controls">
+                        <button class="map-btn" onclick="zoomIn()">+</button>
+                        <button class="map-btn" onclick="zoomOut()">-</button>
+                        <button class="map-btn" onclick="centerMap()">⊙</button>
+                        <button class="map-btn" onclick="toggleSatellite()">🛰️</button>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div class="location-row">
+                        <span class="location-label">Street Address:</span>
+                        <span class="location-value" id="street-address">--</span>
+                    </div>
+                    <div class="location-row">
+                        <span class="location-label">City:</span>
+                        <span class="location-value" id="city">--</span>
+                    </div>
+                    <div class="location-row">
+                        <span class="location-label">Country:</span>
+                        <span class="location-value" id="country">--</span>
+                    </div>
+                    <div class="location-row">
+                        <span class="location-label">Coordinates:</span>
+                        <span class="location-value" id="coordinates">--</span>
+                    </div>
+                    <div class="location-row">
+                        <span class="location-label">Proxy:</span>
+                        <span class="location-value" id="proxy-info">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="speed-section">
+                <h3 style="margin-bottom: 10px; color: var(--primary);">Network Speed Optimization</h3>
+                <div class="speed-bar">
+                    <div class="speed-fill" id="speed-fill"></div>
+                </div>
+                <div class="speed-info">
+                    <span>Download: <span id="download-speed">0</span> Mbps</span>
+                    <span>Upload: <span id="upload-speed">0</span> Mbps</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Browser & Logs -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Integrated Browser</div>
+                <div class="status-dot" style="background: var(--success);"></div>
+            </div>
+            
+            <div class="browser-section">
+                <div class="browser-toolbar">
+                    <input type="text" class="browser-url" placeholder="https://..." id="browser-url">
+                    <button class="browser-nav-btn" onclick="navigate()">Go</button>
+                </div>
+                
+                <div class="browser-window">
+                    <div class="browser-header">
+                        <div class="browser-tabs">
+                            <div class="browser-tab active">Dashboard</div>
+                            <div class="browser-tab">Monitor</div>
+                            <div class="browser-tab">Settings</div>
+                        </div>
+                    </div>
+                    
+                    <div class="browser-content">
+                        <div class="owner-badge">
+                            <div style="font-size: 16px; color: var(--text-muted); margin-bottom: 10px;">
+                                Mozilla Firefox Integrated Browser
+                            </div>
+                            <div class="owner-name">Olawale Abdul-Ganiyu</div>
+                            <div style="font-size: 14px; color: var(--text-muted); margin-top: 10px;">
+                                Full Function Owner & Administrator
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(0, 255, 136, 0.1); padding: 15px; border-radius: 10px;">
+                            <h4 style="margin-bottom: 10px; color: var(--primary);">Browser Status</h4>
+                            <p style="font-size: 14px; margin-bottom: 5px;">🚀 Enhanced Speed: Active</p>
+                            <p style="font-size: 14px; margin-bottom: 5px;">🔒 Security: Maximum</p>
+                            <p style="font-size: 14px; margin-bottom: 5px;">📊 Bandwidth: Optimized</p>
+                            <p style="font-size: 14px;">🌐 Network: Secured</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="margin-bottom: 10px; color: var(--primary);">Connection Log</h3>
+                <div class="log-section" id="connection-log">
+                    <!-- Logs will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Popup -->
+    <div class="alert-popup" id="alert-popup">
+        <div class="alert-header">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-title">New Connection Request</div>
+        </div>
+        <div class="alert-content">
+            <p style="margin-bottom: 10px;"><strong>Device:</strong> <span id="alert-device">Unknown</span></p>
+            <p style="margin-bottom: 10px;"><strong>IP Address:</strong> <span id="alert-ip">--</span></p>
+            <p style="margin-bottom: 10px;"><strong>Location:</strong> <span id="alert-location">--</span></p>
+            <p style="margin-bottom: 10px;"><strong>Type:</strong> <span id="alert-type">--</span></p>
+            <p style="color: var(--warning);">This device is requesting access to your network. Grant permission?</p>
+        </div>
+        <div class="alert-actions">
+            <button class="alert-btn allow" onclick="allowConnection()">✅ Allow Access</button>
+            <button class="alert-btn block" onclick="blockConnection()">🚫 Block Forever</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css">
+    <script src="js/app.js"></script>
+</body>
+</html>
